@@ -1,0 +1,18 @@
+
+spring:
+# 참고 : https://velog.io/@wonizizi99/Spring-Spring-Boot-%EC%97%90%EC%84%9C-H2-database-%EC%82%AC%EC%9A%A9%EB%B2%95
+  datasource:
+    url: jdbc:h2:mem:db;MODE=MYSQL
+    driver-class-name: org.h2.Driver
+    username: pt
+    password: pt_1234
+
+#  jpa:
+#    generate-ddl: 'true'
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        #  show_sql: true
+#        format_sql: true
+#        use_sql_comments: true # sql 과 함께 jpql 주석처리되어  콘솔창에 출력
