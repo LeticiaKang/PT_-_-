@@ -7,14 +7,12 @@ import lombok.ToString;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @ToString
 @Entity
 @Table(name = "user")
-public class UserEntity  {
+public class UserEntity extends BaseEntity {
     @Id
     private String userId;
 
@@ -23,7 +21,5 @@ public class UserEntity  {
     private UserStatus status;
     private String phone;
     private String meta;
-    private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
 
 }

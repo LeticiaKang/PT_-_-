@@ -9,7 +9,6 @@ import lombok.ToString;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
@@ -18,7 +17,7 @@ import java.util.Objects;
 @Entity
 @EqualsAndHashCode
 @Table(name = "package")
-public class PackageEntity {
+public class PackageEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본 키 생성을 DB에 위임 (AUTO_INCREMENT)
     private Integer packageSeq;
@@ -26,7 +25,5 @@ public class PackageEntity {
     private String packageName;
     private Integer count;
     private Integer period;
-    private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
 
 }
