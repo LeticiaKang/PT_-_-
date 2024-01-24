@@ -19,4 +19,11 @@ public interface PackageRepository extends JpaRepository<PackageEntity, Integer>
      * PackageEntity 엔티티의 기본키가 Integer임을 이와 같이 추가로 지정해야 한다.
      */
 
+    List<PackageEntity> findByCreatedAtAfter(LocalDateTime dateTime, Pageable pageable);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE PackageEntity p SET p.count = :count, p.period = :period WHERE p.packageSeq = :id")
+    int updateCountAndPeriod(@Param("id") Integer packageSeq, @Param("count") Integer count, @Param("period") Integer period);
+
 }
