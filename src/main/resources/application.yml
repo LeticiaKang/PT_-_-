@@ -1,18 +1,26 @@
 
 spring:
 # 참고 : https://velog.io/@wonizizi99/Spring-Spring-Boot-%EC%97%90%EC%84%9C-H2-database-%EC%82%AC%EC%9A%A9%EB%B2%95
-  datasource:
-    url: jdbc:h2:mem:db;MODE=MYSQL
-    driver-class-name: org.h2.Driver
-    username: pt
-    password: pt_1234
+  application:
+    name: pass-batch
 
-#  jpa:
-#    generate-ddl: 'true'
-#    hibernate:
-#      ddl-auto: create
-#    properties:
-#      hibernate:
-#        #  show_sql: true
-#        format_sql: true
-#        use_sql_comments: true # sql 과 함께 jpql 주석처리되어  콘솔창에 출력
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/pass_local?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: pt
+    password: pt_123456@
+    hikari: # Spring Boot2부터 default DBCP는 hikariCP이다.
+      maximum-pool-size: 20             # pool에 보관 가능한 최대 connection 수
+      # minimum-idle: 20                  maximum-pool-size를 따라가므로 설정을 생략
+
+  batch:
+    jdbc:
+      # Batch에 사용되는 SQL 초기화 스크립트를 실행한다.
+      # 임베디드인 경우에는 기본적으로 실행하는데, always 설정을 하면 임베디드 타입처럼 항상 활성화시킬 수 있다.
+      # 초기 수행한 이후에는 꺼두어도 된다.
+      # batch job을 위한 초기 인스턴스가 필요한데, h2는 자동 생성해주지만 외부와 연결할 경우 이와 같이 설정해줘야 한다.
+      initialize-schema: always
+
+logging:
+  level:
+    org.springframework.batch: DEBUG
