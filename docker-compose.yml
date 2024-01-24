@@ -5,20 +5,20 @@ services:
   mysql:
     container_name: mysql_local
     image: mysql:8.2.0
-    volumes:
-      - ./db/conf.d:/etc/mysql/conf.d # 설정 파일 - 호스트 파일
-      - ./db/initdb.d:/docker-entrypoint-initdb.d # sql 실행 파일, 컨테이너가 시작되면 sh file, sql파일이 실행된다(알파벳순으로 실행)
-    ports:  #기본 포트
-      - "3306:3306"
-    environment:
+    volumes:                                      # {호스트}:{컨테이너}
+      - ./db/conf.d:/etc/mysql/conf.d             # MySQL 설정 파일 - 호스트 파일
+      - ./db/initdb.d:/docker-entrypoint-initdb.d # sql의 create와 insert 쿼리가 들어 있음, 컨테이너가 시작되면 sh file, sql파일이 실행된다(알파벳순으로 실행)
+    ports:                                        # 외부로 노출시킬 port
+      - "3307:3306"                               # 포트 충돌로 3307으로 변경
+    environment:                                  # 환경 변수
       - MYSQL_DATABASE=pass_local
       - MYSQL_USER=pt
-      - MYSQL_PASSWORD=pt_123
-      - MYSQL_ROOT_PASSWORD=pt_123
+      - MYSQL_PASSWORD=pt_123456@
+      - MYSQL_ROOT_PASSWORD=pt_123456@
       - TZ=Asia/Seoul  #시간
     command:
-        - --character-set-server=utf8mb4
-        - --collation-server=utf8mb4_unicode_ci
-        - --skip-character-set-client-handshake
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
 #    restart: always #설정 안함 -> 멈추면 항상 확인하기 위해
 
