@@ -33,6 +33,10 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	// mysql
 	runtimeOnly 'com.mysql:mysql-connector-j'
+	// mapstruct
+	implementation 'org.mapstruct:mapstruct:1.5.2.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+
 	// ### test ###
 	// spring boot & batch
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -40,6 +44,8 @@ dependencies {
 	// lombok
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	testImplementation 'org.apache.commons:commons-lang3:3.12.0'
 
 
 }
