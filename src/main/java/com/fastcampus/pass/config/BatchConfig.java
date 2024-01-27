@@ -23,7 +23,7 @@ import org.springframework.transaction.PlatformTransactionManager;
  */
 
 @Configuration  // 환경 설정 관련 Class 임을 명시
-@EnableBatchProcessing  //초기 메타 데이터 생성시 주석 처리하고 돌려야 메타데이터가 생성됨
+//@EnableBatchProcessing  //초기 메타 데이터 생성시 주석 처리하고 돌려야 메타데이터가 생성됨
 @EnableConfigurationProperties(BatchProperties.class)
 public class BatchConfig {
 //    @Bean
