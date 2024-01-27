@@ -1,31 +1,29 @@
 package com.fastcampus.pass.repository.pass;
 
 import com.fastcampus.pass.repository.BaseEntity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @ToString
 @Entity
-@Table(name = "pass")
-public class PassEntity extends BaseEntity {
+@Table(name = "bulk_pass")
+public class BulkPassEntity extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본 키 생성을 DB에 위임합니다. (AUTO_INCREMENT)
-    private Integer passSeq;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer bulkPassSeq;
     private Integer packageSeq;
-    private String userId;
+    private String userGroupId;
 
     @Enumerated(EnumType.STRING)
-    private PassStatus status;
-    private Integer remainingCount;
+    private BulkPassStatus status;
+    private Integer count;
 
     private LocalDateTime startedAt;
     private LocalDateTime endedAt;
-    private LocalDateTime expiredAt;
-
 }
