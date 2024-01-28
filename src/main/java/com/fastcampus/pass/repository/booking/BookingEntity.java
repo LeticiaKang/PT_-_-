@@ -31,8 +31,14 @@ public class BookingEntity extends BaseEntity {
     private LocalDateTime cancelledAt;
     //생성일시와 수정일시는 BaseEntity를 상속받았으므로 추가하지 않아도 된다
 
+    //user데이터가 필요하기 때문에 userId를 조인 컬럼으로 넣음
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", insertable = false, updatable = false)
     private UserEntity userEntity;
+
+    //pass정보를 가져오기 위해 passSeq를 조인 컬럼으로 넣음
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "passSeq", insertable = false, updatable = false)
+    private UserEntity passEntity;
 
 }
