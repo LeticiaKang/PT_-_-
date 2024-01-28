@@ -25,11 +25,11 @@ public class UserEntity extends BaseEntity {
     private UserStatus status;
     private String phone;
 
-    // json 형태로 저장되어 있는 문자열 데이터를 Map으로 매핑합니다.
+    // String을 json으로 바꿔서 정의함. (저장되어 있는 문자열 데이터를 Map으로 매핑)
     @JdbcTypeCode(SqlTypes.JSON)
     private Map<String, Object> meta;
 
-    public String getUuid() {
+    public String getUuid() {  //meta에 uuid가 있으면, uuid를 반환. 없으면 null 반환.
         String uuid = null;
         if (meta.containsKey("uuid")) {
             uuid = String.valueOf(meta.get("uuid"));
