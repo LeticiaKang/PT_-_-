@@ -1,6 +1,7 @@
 package com.fastcampus.pass.repository.booking;
 
 import com.fastcampus.pass.repository.BaseEntity;
+import com.fastcampus.pass.repository.user.UserEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -29,5 +30,9 @@ public class BookingEntity extends BaseEntity {
     private LocalDateTime endedAt;
     private LocalDateTime cancelledAt;
     //생성일시와 수정일시는 BaseEntity를 상속받았으므로 추가하지 않아도 된다
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
+    private UserEntity userEntity;
 
 }

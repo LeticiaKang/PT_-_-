@@ -9,19 +9,24 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: pt
     password: pt_123456@
-    hikari: # Spring Boot2부터 default DBCP는 hikariCP이다.
-      maximum-pool-size: 20             # pool에 보관 가능한 최대 connection 수
-      # minimum-idle: 20                  maximum-pool-size를 따라가므로 설정을 생략
+    hikari:                                                   # Spring Boot2부터 default DBCP는 hikariCP이다.
+      maximum-pool-size: 20                                   # pool에 보관 가능한 최대 connection 수
+      # minimum-idle: 20                                      maximum-pool-size를 따라가므로 설정을 생략
 
   batch:
     jdbc:
       initialize-schema: always
       # Batch에 사용되는 SQL 초기화 스크립트를 실행한다.
-      # 임베디드인 경우에는 기본적으로 실행하는데, always 설정을 하면 임베디드 타입처럼 항상 활성화시킬 수 있다.
-      # 초기 수행한 이후에는 꺼두어도 된다.
+      # 임베디드인 경우에는 기본적으로 실행하는데, always 설정을 하면 임베디드 타입처럼 항상 활성화시킬 수 있다. 초기 수행한 이후에는 꺼두어도 된다.
       # batch job을 위한 초기 인스턴스가 필요한데, h2는 자동 생성해주지만 외부와 연결할 경우 이와 같이 설정해줘야 한다.
 
 logging:
   level:
-    org.springframework.batch: DEBUG
+    org:
+      springframework:
+        batch: DEBUG
+
+kakaotalk:
+  host: https://kapi.kakao.com
+  token: bb3cTRs681YzUHrUA8XiYxz5bbJJNjbiMXQKPXNNAAABjUqCuNZUdd9ffL_GXA
 
