@@ -1,5 +1,6 @@
 package com.fastcampus.pass.repository.packaze;
 
+import com.fastcampus.pass.config.TestBatchConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Slf4j
 @SpringBootTest
 @ActiveProfiles("test")
-@EnableJpaAuditing
+@ContextConfiguration(classes = {TestBatchConfig.class})
 class PackageRepositoryTest {
 
     private final PackageRepository packageRepository;
