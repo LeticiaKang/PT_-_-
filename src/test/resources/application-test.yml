@@ -29,5 +29,5 @@ spring:
 logging:
   level:
     org:
-      hibernate.type.descriptor.sql: trace # 바인딩되는 모든 파라미터를 찍습니다.
+      hibernate.type.descriptor.sql: off
       springframework.batch: DEBUG
