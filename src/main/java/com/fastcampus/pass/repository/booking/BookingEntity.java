@@ -1,6 +1,7 @@
 package com.fastcampus.pass.repository.booking;
 
 import com.fastcampus.pass.repository.BaseEntity;
+import com.fastcampus.pass.repository.pass.PassEntity;
 import com.fastcampus.pass.repository.user.UserEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,6 +40,12 @@ public class BookingEntity extends BaseEntity {
     //pass정보를 가져오기 위해 passSeq를 조인 컬럼으로 넣음
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "passSeq", insertable = false, updatable = false)
-    private UserEntity passEntity;
+    private PassEntity passEntity;
 
+    // endedAt 기준, yyyy-MM-HH 00:00:00
+    public LocalDateTime getStatisticsAt() {
+        // 통계를 날짜별로 그룹화하기 위해선, 시간, 분, 초, 밀리초 등의 시간 구성 요소를 모두 0으로 설정하여 해당 날짜의 자정을 기준으로 통계를 집계한다.(일별 집계)
+        // endedAt 컬럼에서 가져올때 시,분,초, 나노초 설정을 바꿈
+        return this.endedAt.withHour(0).withMinute(0).withSecond(0).withNano(0);
+    }
 }

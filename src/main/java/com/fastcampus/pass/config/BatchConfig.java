@@ -23,9 +23,15 @@ import org.springframework.transaction.PlatformTransactionManager;
  */
 
 @Configuration  // 환경 설정 관련 Class 임을 명시
-//@EnableBatchProcessing  //초기 메타 데이터 생성시 주석 처리하고 돌려야 메타데이터가 생성됨
-@EnableConfigurationProperties(BatchProperties.class)
+@EnableBatchProcessing  //초기 메타 데이터 생성시 주석 처리하고 돌려야 메타데이터가 생성됨
 public class BatchConfig {
+
+    /**
+     * JobRegistry는 context에서 Job을 추적할 때 유용합니다.
+     * JobRegistryBeanPostProcessor는 Application Context가 올라가면서 bean 등록 시, 자동으로 JobRegistry에 Job을 등록 시켜줍니다.
+     */
+
+
 //    @Bean
 //    public Job passJob(JobRepository jobRepository, PlatformTransactionManager transactionManager,
 //                       Step passStep) {
