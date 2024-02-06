@@ -13,6 +13,7 @@ import java.util.Properties;
 @Setter
 @ToString
 public class JobLauncherRequest {
+    
     private String name;
     private Properties jobParameters;
 
