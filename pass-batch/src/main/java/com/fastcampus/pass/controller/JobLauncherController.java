@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("job")
-public class JobLauncherController {  // 배치 작업을 실행하는 RESTful API 구현
+public class JobLauncherController {
+// 배치 작업을 실행하는 RESTful API 구현
 
     private final JobLauncher jobLauncher;  //스프링 배치에서 작업을 실행하는 데 사용되는 인터페이스
 
