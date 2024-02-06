@@ -17,10 +17,13 @@ public class StatisticsService {
         this.statisticsRepository = statisticsRepository;
     }
 
+    // 차트 데이터를 만들어 주는 메서드
     public ChartData makeChartData(final LocalDateTime to) {
+        // to 에서 10일을 뺌
         final LocalDateTime from = to.minusDays(10);
 
         final List<AggregatedStatistics> aggregatedStatisticsList = statisticsRepository.findByStatisticsAtBetweenAndGroupBy(from, to);
+        // 라벨, 출석 횟수, 취소 횟수
         List<String> labels = new ArrayList<>();
         List<Long> attendedCounts = new ArrayList<>();
         List<Long> cancelledCounts = new ArrayList<>();
