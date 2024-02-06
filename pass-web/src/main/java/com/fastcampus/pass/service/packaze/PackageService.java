@@ -16,7 +16,7 @@ public class PackageService {
         this.packageRepository = packageRepository;
     }
 
-    // 패키지 이름으로 정렬하여 모든 패키지 조회
+    // 패키지 이름으로 정렬하여 모든 패키지 조회하는 메서드
     public List<Package> getAllPackages() {
         List<PackageEntity> bulkPassEntities = packageRepository.findAllByOrderByPackageName();
         return PackageModelMapper.INSTANCE.map(bulkPassEntities);

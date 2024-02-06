@@ -15,7 +15,7 @@ public class UserGroupMappingService {
         this.userGroupMappingRepository = userGroupMappingRepository;
     }
 
-    // user group id를 중복없이 역순으로 조회
+    // user group id를 중복없이 역순으로 조회하는 메서드
     public List<String> getAllUserGroupIds() {
         return userGroupMappingRepository.findDistinctUserGroupId();
 
