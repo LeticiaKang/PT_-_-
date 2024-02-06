@@ -22,10 +22,11 @@ public class AdminViewController {
     private final UserGroupMappingService userGroupMappingService;
     private final StatisticsService statisticsService;
 
-    @GetMapping
+    @GetMapping //차트 뷰 포함
     public String home(@RequestParam(value = "to", required = false) String toString, Model model) {
         LocalDateTime to = Strings.isEmpty(toString) ? LocalDateTime.now() : LocalDateTimeUtils.parseDate(toString);
 
+        // chartData 조회
         model.addAttribute("chartData", statisticsService.makeChartData(to));
         return "admin/index";
     }
